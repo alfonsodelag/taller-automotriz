@@ -14,6 +14,9 @@ const serviceOptions = [
   "Mantenimiento preventivo",
   "Otro"
 ];
+
+const inputClass =
+  "rounded-md border border-shell bg-white px-4 py-3 text-sm text-ink placeholder:text-cocoa focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose";
 ---
 
 <section id="contacto" class="section-pad bg-shell">
@@ -30,71 +33,39 @@ const serviceOptions = [
         <p><strong class="text-ink">Horario:</strong> {siteConfig.hours.weekdays}</p>
         <p class="text-sm text-cocoa">{siteConfig.hours.saturday}</p>
       </div>
-      <a class="btn-primary mt-8" href={whatsappUrl}>Hablar por WhatsApp</a>
+      <a class="btn-primary mt-8 inline-flex" href={whatsappUrl}>Hablar por WhatsApp</a>
     </div>
 
     <form class="card grid gap-4 p-6" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value={web3formsKey ?? ""} />
       <input type="hidden" name="subject" value={`Nueva solicitud desde ${siteConfig.businessName}`} />
 
-      <input
-        class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-        type="text"
-        name="name"
-        placeholder="Nombre completo"
-        required
-      />
+      <input class={inputClass} type="text" name="name" placeholder="Nombre completo" required />
 
       <div class="grid gap-4 sm:grid-cols-2">
-        <input
-          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-          type="tel"
-          name="phone"
-          placeholder="Teléfono / WhatsApp"
-          required
-        />
-        <input
-          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-          type="email"
-          name="email"
-          placeholder="Email (opcional)"
-        />
+        <input class={inputClass} type="tel" name="phone" placeholder="Teléfono / WhatsApp" required />
+        <input class={inputClass} type="email" name="email" placeholder="Email (opcional)" />
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
-        <input
-          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-          type="text"
-          name="vehicle_make"
-          placeholder="Marca del vehículo (ej. Toyota, BMW)"
-          required
-        />
-        <input
-          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-          type="text"
-          name="vehicle_model"
-          placeholder="Modelo y año (ej. Corolla 2019)"
-        />
+        <input class={inputClass} type="text" name="vehicle_make" placeholder="Marca del vehículo (ej. Toyota, BMW)" required />
+        <input class={inputClass} type="text" name="vehicle_model" placeholder="Modelo y año (ej. Corolla 2019)" />
       </div>
 
-      <select
-        class="rounded-md border border-ink/15 px-4 py-3 text-sm text-cocoa focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
-        name="service"
-        required
-      >
+      <select class={inputClass} name="service" required>
         <option value="">Servicio requerido</option>
         {serviceOptions.map((option) => <option value={option}>{option}</option>)}
       </select>
 
       <textarea
-        class="min-h-36 rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+        class={`${inputClass} min-h-36`}
         name="message"
         placeholder="Describe el problema o lo que necesitas"
         required
       ></textarea>
 
       {!web3formsKey && (
-        <p class="rounded-md bg-rose/10 px-4 py-3 text-sm text-cocoa">
+        <p class="rounded-md bg-rose-soft px-4 py-3 text-sm text-rose">
           Configura PUBLIC_WEB3FORMS_ACCESS_KEY en Vercel o en tu archivo .env local.
         </p>
       )}

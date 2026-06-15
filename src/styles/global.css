@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-cream text-ink antialiased;
+    @apply bg-white text-ink antialiased;
   }
 
   ::selection {
@@ -21,16 +21,24 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
   }
 
+  /* Eyebrow: rojo mecánico sobre cualquier fondo */
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-sage;
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-rose;
   }
 
+  /* Botón rojo — acción principal, CTAs */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-cocoa focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md bg-rose px-5 py-3 text-sm font-bold text-white shadow-soft transition hover:bg-rose-dark focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
   }
 
+  /* Botón oscuro — sobre fondos claros (secciones blancas/hielo) */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-ink/15 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-rose hover:text-cocoa focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md border border-ink/20 bg-transparent px-5 py-3 text-sm font-bold text-ink transition hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+  }
+
+  /* Botón contorno — sobre fondos oscuros (hero, header, footer) */
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-md border border-shell/60 bg-transparent px-5 py-3 text-sm font-bold text-shell transition hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
   }
 
   .section-pad {
@@ -38,6 +46,6 @@
   }
 
   .card {
-    @apply rounded-lg border border-ink/10 bg-white shadow-soft;
+    @apply rounded-lg border border-shell bg-white shadow-card;
   }
 }

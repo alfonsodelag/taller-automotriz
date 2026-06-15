@@ -5,7 +5,7 @@ import { siteConfig, whatsappUrl } from "@/config/site";
 
 <section class="section-pad bg-cream">
   <div class="container-page grid items-center gap-10 lg:grid-cols-2">
-    <div class="h-96 overflow-hidden rounded-lg bg-white shadow-soft">
+    <div class="h-96 overflow-hidden rounded-lg bg-white shadow-soft border border-shell">
       <img class="h-full w-full object-cover" src="/images/breadcrumb-bg.jpg" alt={`Zona cercana al taller ${siteConfig.businessName} en ${siteConfig.address}`} loading="lazy" />
     </div>
     <div>
@@ -14,13 +14,18 @@ import { siteConfig, whatsappUrl } from "@/config/site";
         title="Estamos en La Carrasquilla, Ciudad de Panamá."
         intro="Fácil acceso desde Calle 65 C Este. Si tienes dudas de cómo llegar, escríbenos por WhatsApp y te orientamos."
       />
-      <div class="mt-8 rounded-lg border border-ink/10 bg-white p-6">
-        <p class="font-semibold text-ink">{siteConfig.address}</p>
-        <p class="mt-2 text-sm leading-6 text-cocoa">{siteConfig.hours.weekdays}</p>
-        <p class="text-sm leading-6 text-cocoa">{siteConfig.hours.saturday}</p>
-        <p class="text-sm leading-6 text-cocoa">{siteConfig.hours.sunday}</p>
+      <div class="mt-8 rounded-lg border border-shell bg-white p-6 shadow-card">
+        <div class="flex items-start gap-3">
+          <div class="mt-1 h-4 w-1 shrink-0 rounded bg-rose"></div>
+          <div>
+            <p class="font-bold text-ink">{siteConfig.address}</p>
+            <p class="mt-2 text-sm leading-6 text-cocoa">{siteConfig.hours.weekdays}</p>
+            <p class="text-sm leading-6 text-cocoa">{siteConfig.hours.saturday}</p>
+            <p class="text-sm leading-6 text-cocoa">{siteConfig.hours.sunday}</p>
+          </div>
+        </div>
       </div>
-      <a class="btn-primary mt-6" href={whatsappUrl}>Cómo llegar – WhatsApp</a>
+      <a class="btn-primary mt-6 inline-flex" href={whatsappUrl}>Cómo llegar – WhatsApp</a>
     </div>
   </div>
 </section>

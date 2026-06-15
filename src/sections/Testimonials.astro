@@ -13,10 +13,11 @@ import { testimonials } from "@/content/testimonials";
     <div class="mt-10 grid gap-6 md:grid-cols-3">
       {testimonials.map((item) => (
         <figure class="card p-6">
-          <blockquote class="text-base leading-7 text-cocoa">"{item.quote}"</blockquote>
-          <figcaption class="mt-5 border-t border-ink/10 pt-5">
-            <p class="font-semibold text-ink">{item.name}</p>
-            <p class="text-sm text-sage">{item.treatment}</p>
+          <div class="mb-4 text-2xl text-rose font-display font-bold">"</div>
+          <blockquote class="text-base leading-7 text-cocoa">{item.quote}</blockquote>
+          <figcaption class="mt-5 border-t border-shell pt-5">
+            <p class="font-bold text-ink">{item.name}</p>
+            <p class="text-sm text-rose">{item.treatment}</p>
           </figcaption>
         </figure>
       ))}

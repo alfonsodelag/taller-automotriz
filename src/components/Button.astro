@@ -1,12 +1,18 @@
 ---
 type Props = {
   href: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "outline";
   label: string;
 };
 
 const { href, variant = "primary", label } = Astro.props;
-const className = variant === "primary" ? "btn-primary" : "btn-secondary";
+
+const className =
+  variant === "primary"
+    ? "btn-primary"
+    : variant === "outline"
+      ? "btn-outline"
+      : "btn-secondary";
 ---
 
 <a class={className} href={href}>{label}</a>

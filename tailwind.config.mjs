@@ -4,29 +4,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // ink = base oscura (casi negro)
-        ink: "#111827",
-        // cocoa = gris frío para texto secundario
-        cocoa: "#4b5563",
-        // rose = naranja industrial (acento principal, CTAs)
-        rose: "#e85d04",
-        // sage = azul profundo (acento secundario, eyebrows, links)
-        sage: "#1e40af",
-        // cream = fondo neutro claro
-        cream: "#f8fafc",
-        // shell = fondo gris suave
-        shell: "#f1f5f9",
-        // lavender = azul noche (uso utilitario)
-        lavender: "#0f172a"
+        // Aliases usados en componentes (compat con clases existentes)
+        ink: "#101214",      // grafito — texto principal
+        cocoa: "#6B7280",    // metal — texto secundario
+        rose: {
+          DEFAULT: "#EE1D23", // rojo mecánico — acento principal, CTAs
+          dark: "#B91419",    // rojo hover
+          soft: "#FFE7E8",    // rojo suave — badges
+        },
+        sage: "#2B2F33",     // acero — fondos secundarios oscuros
+        cream: "#E7F6F9",    // hielo — fondos claros suaves
+        shell: "#D7DEE2",    // plata — bordes, fondos más suaves
+        lavender: "#000200", // negro carbón — hero, header, footer
+        // Namespace brand para uso explícito y futura referencia
+        brand: {
+          red: "#EE1D23",
+          redDark: "#B91419",
+          redSoft: "#FFE7E8",
+          ice: "#E7F6F9",
+          black: "#000200",
+          graphite: "#101214",
+          steel: "#2B2F33",
+          metal: "#6B7280",
+          silver: "#D7DEE2",
+          white: "#FFFFFF",
+        },
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["Barlow Condensed", "Arial Narrow", "sans-serif"]
+        display: ["Barlow Condensed", "Arial Narrow", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(0, 0, 0, 0.08)"
-      }
-    }
+        soft: "0 18px 60px rgba(0, 0, 0, 0.10)",
+        card: "0 4px 24px rgba(0, 0, 0, 0.06)",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
