@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Taller automotriz con más de 25 años de experiencia en Panamá",
   description:
     "Especialistas en mecánica general, chapistería, pintura, aire acondicionado automotriz y detailing. Atención directa por sus propios dueños. BMW, carros japoneses y otras marcas.",
-  url: "https://galvezcarservices.vercel.app",
+  url: "https://demo-taller-galvez-car-services.vercel.app",
   // ⚠️ Validar número de teléfono exacto con el cliente antes de publicar
   phone: "+507 261-6197",
   whatsapp: "50767473679",

@@ -5,7 +5,7 @@ import { siteConfig, whatsappUrl } from "@/config/site";
 <footer class="bg-ink text-white">
   <div class="container-page grid gap-10 py-14 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
     <div>
-      <p class="font-display text-2xl font-bold tracking-wide">{siteConfig.businessName}</p>
+      <img src="/images/logo.png" alt={`Logo ${siteConfig.businessName}`} class="h-16 w-auto object-contain brightness-0 invert" />
       <p class="mt-4 max-w-md text-sm leading-6 text-white/70">{siteConfig.description}</p>
       <a class="btn-primary mt-6 bg-rose text-white hover:bg-rose/90" href={whatsappUrl}>Agendar por WhatsApp</a>
     </div>
