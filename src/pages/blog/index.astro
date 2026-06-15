@@ -2,7 +2,33 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
 import Contact from "@/sections/Contact.astro";
-import { posts } from "@/content/blog";
+import { sanityClient, urlFor } from "@/lib/sanity";
+
+const posts = await sanityClient.fetch<{
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt: string;
+  category: string;
+  image: any;
+}[]>(
+  `*[_type == "post"] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    excerpt,
+    category,
+    image
+  }`
+);
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("es-PA", {
+    year: "numeric", month: "long", day: "numeric",
+  });
+}
 ---
 
 <BaseLayout
@@ -17,18 +43,38 @@ import { posts } from "@/content/blog";
         intro="Guías sobre mantenimiento, señales de alerta, diagnóstico y cómo sacarle más vida a tu carro en el clima y las condiciones de Panamá."
         align="center"
       />
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {posts.map((post) => (
-          <article class="card overflow-hidden">
-            <img class="h-56 w-full object-cover" src={post.image} alt={post.title} loading="lazy" />
-            <div class="p-6">
-              <time class="text-xs font-semibold uppercase tracking-[0.14em] text-sage" datetime={post.date}>{post.date}</time>
-              <h2 class="mt-3 font-display text-2xl font-bold text-ink">{post.title}</h2>
-              <p class="mt-3 text-sm leading-6 text-cocoa">{post.excerpt}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+
+      {posts.length === 0 ? (
+        <p class="mt-12 text-center text-cocoa">Aún no hay artículos publicados.</p>
+      ) : (
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <article class="card overflow-hidden group">
+              <div class="relative overflow-hidden">
+                <img
+                  class="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
+                  src={post.image ? urlFor(post.image).width(800).height(480).url() : "/images/blog/blog-1.jpg"}
+                  alt={post.title}
+                  loading="lazy"
+                />
+                {post.category && (
+                  <span class="absolute left-4 top-4 rounded bg-rose px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                    {post.category}
+                  </span>
+                )}
+                <div class="absolute bottom-0 left-0 h-1 w-full bg-rose"></div>
+              </div>
+              <div class="p-6">
+                <time class="text-xs font-bold uppercase tracking-[0.14em] text-rose" datetime={post.publishedAt}>
+                  {formatDate(post.publishedAt)}
+                </time>
+                <h2 class="mt-3 font-display text-xl font-bold leading-snug text-ink">{post.title}</h2>
+                <p class="mt-3 text-sm leading-6 text-cocoa">{post.excerpt}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   </section>
   <Contact />
