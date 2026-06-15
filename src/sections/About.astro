@@ -1,0 +1,37 @@
+---
+import SectionTitle from "@/components/SectionTitle.astro";
+---
+
+<section class="section-pad bg-cream">
+  <div class="container-page grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <div class="grid grid-cols-2 gap-4">
+      <img class="h-80 w-full rounded-lg object-cover" src="/images/about-video.jpg" alt="Mecánico trabajando en el taller Gálvez Car Services" loading="lazy" />
+      <img class="mt-10 h-80 w-full rounded-lg object-cover" src="/images/contact-pic.jpg" alt="Interior del taller automotriz Gálvez Car Services en Panamá" loading="lazy" />
+    </div>
+    <div>
+      <SectionTitle
+        eyebrow="El taller"
+        title="Un taller familiar donde conoces a quién repara tu carro."
+        intro="Gálvez Car Services es un taller automotriz en Ciudad de Panamá atendido directamente por sus propios dueños. Más de 25 años de experiencia, trato directo y diagnóstico honesto sin sorpresas al final."
+      />
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        <div class="card p-5">
+          <h3 class="font-semibold text-ink">Atendido por sus dueños</h3>
+          <p class="mt-2 text-sm leading-6 text-cocoa">Sabes con quién hablas y quién responde por cada trabajo. Sin intermediarios ni excusas.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-semibold text-ink">Servicio completo</h3>
+          <p class="mt-2 text-sm leading-6 text-cocoa">Mecánica, chapistería, pintura, A/C y detailing bajo un mismo techo. Sin andar de taller en taller.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-semibold text-ink">BMW y carros japoneses</h3>
+          <p class="mt-2 text-sm leading-6 text-cocoa">Experiencia específica en mecánica y electrónica de BMW, Toyota, Honda, Nissan y otras marcas.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-semibold text-ink">Diagnóstico claro</h3>
+          <p class="mt-2 text-sm leading-6 text-cocoa">Te explicamos qué tiene el vehículo antes de empezar. Sin trabajo innecesario y sin sorpresas en el presupuesto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

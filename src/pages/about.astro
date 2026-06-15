@@ -1,0 +1,36 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import Doctors from "@/sections/Doctors.astro";
+import Testimonials from "@/sections/Testimonials.astro";
+import Contact from "@/sections/Contact.astro";
+---
+
+<BaseLayout
+  title="Nosotros | Gálvez Car Services – Taller Automotriz en Panamá"
+  description="Conoce la historia y el equipo de Gálvez Car Services, taller automotriz en Panamá con más de 25 años de experiencia en mecánica, chapistería, pintura y aire acondicionado."
+>
+  <section class="section-pad bg-white">
+    <div class="container-page grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <SectionTitle
+          eyebrow="Más de 25 años en el ramo"
+          title="Un taller familiar donde sabes a quién le entregas tu carro."
+          intro="Gálvez Car Services es un taller automotriz en Ciudad de Panamá atendido directamente por sus propios dueños. Eso significa trato directo, diagnóstico honesto y seguimiento real de tu vehículo."
+        />
+        <p class="mt-6 text-base leading-8 text-cocoa">
+          Nos especializamos en BMW, carros japoneses y otras marcas. Con experiencia en mecánica general, chapistería, pintura, aire acondicionado y detailing, ofrecemos un servicio completo bajo un mismo techo, sin intermediarios ni sorpresas.
+        </p>
+      </div>
+      <img
+        class="h-[34rem] w-full rounded-lg object-cover shadow-soft"
+        src="/images/about-video.jpg"
+        alt="Taller Gálvez Car Services en Ciudad de Panamá – más de 25 años de experiencia"
+        loading="lazy"
+      />
+    </div>
+  </section>
+  <Doctors />
+  <Testimonials />
+  <Contact />
+</BaseLayout>

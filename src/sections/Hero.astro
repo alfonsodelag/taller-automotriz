@@ -1,0 +1,48 @@
+---
+import Button from "@/components/Button.astro";
+import { whatsappUrl } from "@/config/site";
+---
+
+<section class="relative overflow-hidden bg-white">
+  <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-shell lg:block"></div>
+  <div class="container-page relative grid min-h-[calc(100vh-5rem)] items-center gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Taller automotriz en Panamá</p>
+      <h1 class="mt-4 font-display text-5xl font-bold leading-tight text-ink sm:text-6xl">
+        Mecánica, chapistería, pintura y aire acondicionado con más de 25 años de experiencia.
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-cocoa">
+        Especialistas en BMW, carros japoneses y otras marcas. Atención directa por sus propios dueños, diagnóstico claro y soluciones confiables para tu vehículo.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Button href={whatsappUrl} label="Agendar por WhatsApp" />
+        <Button href="/services" label="Ver servicios" variant="secondary" />
+      </div>
+      <dl class="mt-10 grid grid-cols-3 gap-4 border-t border-ink/10 pt-8">
+        <div>
+          <dt class="font-display text-3xl font-bold text-rose">25+</dt>
+          <dd class="mt-1 text-xs uppercase tracking-[0.12em] text-cocoa">Años de experiencia</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-bold text-rose">8+</dt>
+          <dd class="mt-1 text-xs uppercase tracking-[0.12em] text-cocoa">Servicios disponibles</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-bold text-rose">L–S</dt>
+          <dd class="mt-1 text-xs uppercase tracking-[0.12em] text-cocoa">Atención directa</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="relative">
+      <img
+        class="h-[36rem] w-full rounded-lg object-cover shadow-soft"
+        src="/images/hero-bg.jpg"
+        alt="Taller Gálvez Car Services – mecánica, chapistería y pintura en Ciudad de Panamá"
+      />
+      <div class="absolute bottom-6 left-6 max-w-xs rounded-lg bg-white/92 p-5 shadow-soft backdrop-blur">
+        <p class="text-sm font-semibold text-ink">Diagnóstico honesto</p>
+        <p class="mt-2 text-sm leading-6 text-cocoa">Te explicamos qué tiene tu vehículo, qué hay que hacer y cuánto cuesta, antes de empezar.</p>
+      </div>
+    </div>
+  </div>
+</section>

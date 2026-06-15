@@ -1,0 +1,35 @@
+---
+import { siteConfig, whatsappUrl } from "@/config/site";
+---
+
+<footer class="bg-ink text-white">
+  <div class="container-page grid gap-10 py-14 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+    <div>
+      <p class="font-display text-2xl font-bold tracking-wide">{siteConfig.businessName}</p>
+      <p class="mt-4 max-w-md text-sm leading-6 text-white/70">{siteConfig.description}</p>
+      <a class="btn-primary mt-6 bg-rose text-white hover:bg-rose/90" href={whatsappUrl}>Agendar por WhatsApp</a>
+    </div>
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.16em] text-white/60">Contacto</h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/80">
+        <li>{siteConfig.phone}</li>
+        <li>{siteConfig.email}</li>
+        <li>{siteConfig.address}</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.16em] text-white/60">Horario</h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/80">
+        <li>{siteConfig.hours.weekdays}</li>
+        <li>{siteConfig.hours.saturday}</li>
+        <li>{siteConfig.hours.sunday}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 py-5">
+    <div class="container-page flex flex-col gap-2 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {new Date().getFullYear()} {siteConfig.businessName}. Todos los derechos reservados.</p>
+      <a href={siteConfig.social.instagram} class="hover:text-white/80" target="_blank" rel="noopener noreferrer">@galvezcarservices</a>
+    </div>
+  </div>
+</footer>

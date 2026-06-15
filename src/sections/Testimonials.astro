@@ -1,0 +1,25 @@
+---
+import SectionTitle from "@/components/SectionTitle.astro";
+import { testimonials } from "@/content/testimonials";
+---
+
+<section class="section-pad bg-white">
+  <div class="container-page">
+    <SectionTitle
+      eyebrow="Clientes"
+      title="Lo que dicen quienes ya nos confiaron su carro."
+      align="center"
+    />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {testimonials.map((item) => (
+        <figure class="card p-6">
+          <blockquote class="text-base leading-7 text-cocoa">"{item.quote}"</blockquote>
+          <figcaption class="mt-5 border-t border-ink/10 pt-5">
+            <p class="font-semibold text-ink">{item.name}</p>
+            <p class="text-sm text-sage">{item.treatment}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

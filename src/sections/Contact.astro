@@ -1,0 +1,104 @@
+---
+import SectionTitle from "@/components/SectionTitle.astro";
+import { siteConfig, whatsappUrl } from "@/config/site";
+
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+const serviceOptions = [
+  "Mecánica general",
+  "Diagnóstico computarizado",
+  "Chapistería",
+  "Pintura automotriz",
+  "Aire acondicionado",
+  "Detailing / Pulimiento",
+  "Mantenimiento preventivo",
+  "Otro"
+];
+---
+
+<section id="contacto" class="section-pad bg-shell">
+  <div class="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+    <div>
+      <SectionTitle
+        eyebrow="Contacto"
+        title="Cuéntanos qué necesita tu vehículo."
+        intro="Escríbenos por WhatsApp o usa el formulario. Te respondemos con un diagnóstico claro y un presupuesto sin sorpresas."
+      />
+      <div class="mt-8 space-y-3 text-sm leading-6 text-cocoa">
+        <p><strong class="text-ink">Teléfono:</strong> {siteConfig.phone}</p>
+        <p><strong class="text-ink">Dirección:</strong> {siteConfig.address}</p>
+        <p><strong class="text-ink">Horario:</strong> {siteConfig.hours.weekdays}</p>
+        <p class="text-sm text-cocoa">{siteConfig.hours.saturday}</p>
+      </div>
+      <a class="btn-primary mt-8" href={whatsappUrl}>Hablar por WhatsApp</a>
+    </div>
+
+    <form class="card grid gap-4 p-6" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value={web3formsKey ?? ""} />
+      <input type="hidden" name="subject" value={`Nueva solicitud desde ${siteConfig.businessName}`} />
+
+      <input
+        class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+        type="text"
+        name="name"
+        placeholder="Nombre completo"
+        required
+      />
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <input
+          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+          type="tel"
+          name="phone"
+          placeholder="Teléfono / WhatsApp"
+          required
+        />
+        <input
+          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+          type="email"
+          name="email"
+          placeholder="Email (opcional)"
+        />
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <input
+          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+          type="text"
+          name="vehicle_make"
+          placeholder="Marca del vehículo (ej. Toyota, BMW)"
+          required
+        />
+        <input
+          class="rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+          type="text"
+          name="vehicle_model"
+          placeholder="Modelo y año (ej. Corolla 2019)"
+        />
+      </div>
+
+      <select
+        class="rounded-md border border-ink/15 px-4 py-3 text-sm text-cocoa focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+        name="service"
+        required
+      >
+        <option value="">Servicio requerido</option>
+        {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+      </select>
+
+      <textarea
+        class="min-h-36 rounded-md border border-ink/15 px-4 py-3 text-sm focus:border-rose focus:outline-none focus:ring-1 focus:ring-rose"
+        name="message"
+        placeholder="Describe el problema o lo que necesitas"
+        required
+      ></textarea>
+
+      {!web3formsKey && (
+        <p class="rounded-md bg-rose/10 px-4 py-3 text-sm text-cocoa">
+          Configura PUBLIC_WEB3FORMS_ACCESS_KEY en Vercel o en tu archivo .env local.
+        </p>
+      )}
+      <button class="btn-primary" type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+</section>

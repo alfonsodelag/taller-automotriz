@@ -1,0 +1,36 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import Contact from "@/sections/Contact.astro";
+import { services } from "@/content/services";
+import { whatsappUrl } from "@/config/site";
+---
+
+<BaseLayout
+  title="Servicios | Gálvez Car Services – Mecánica, Chapistería y Pintura en Panamá"
+  description="Mecánica general, diagnóstico computarizado, chapistería, pintura automotriz, aire acondicionado, detailing y mantenimiento preventivo. Taller en Ciudad de Panamá."
+>
+  <section class="section-pad bg-white">
+    <div class="container-page">
+      <SectionTitle
+        eyebrow="Servicios"
+        title="Todo lo que tu vehículo necesita, en un solo lugar."
+        intro="Mecánica, carrocería, pintura, aire acondicionado y detailing. Diagnóstico claro y presupuesto sin sorpresas antes de empezar."
+        align="center"
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => (
+          <article class="card overflow-hidden">
+            <img class="h-52 w-full object-cover" src={service.image} alt={service.title} loading="lazy" />
+            <div class="p-6">
+              <h2 class="font-display text-2xl font-bold text-ink">{service.title}</h2>
+              <p class="mt-3 text-sm leading-6 text-cocoa">{service.description}</p>
+              <a class="mt-5 inline-flex text-sm font-semibold text-rose hover:text-ink" href={whatsappUrl}>Solicitar cotización →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Contact />
+</BaseLayout>
