@@ -4,39 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Aliases usados en componentes (compat con clases existentes)
-        ink: "#101214",      // grafito — texto principal
-        cocoa: "#6B7280",    // metal — texto secundario
+        // Tokens usados en todos los componentes
+        ink: "#363435",      // texto principal — gris cálido oscuro (del competidor: --e-global-color-text)
+        cocoa: "#6B7280",    // texto secundario — gris neutro
         rose: {
-          DEFAULT: "#EE1D23", // rojo mecánico — acento principal, CTAs
-          dark: "#B91419",    // rojo hover
-          soft: "#FFE7E8",    // rojo suave — badges
+          DEFAULT: "#EE1D23", // rojo Gálvez — botones, acentos, CTAs
+          dark: "#B91419",    // hover rojo
+          soft: "#FFE7E8",    // badges suaves
         },
-        sage: "#2B2F33",     // acero — fondos secundarios oscuros
-        cream: "#E7F6F9",    // hielo — fondos claros suaves
-        shell: "#D7DEE2",    // plata — bordes, fondos más suaves
-        lavender: "#000200", // negro carbón — hero, header, footer
-        // Namespace brand para uso explícito y futura referencia
+        sage: "#23323B",     // acero azul oscuro (del competidor: --e-global-color-d194eae)
+        cream: "#FAFAFA",    // fondo claro cálido (del competidor: --e-global-color-2a72968)
+        shell: "#EBEAEB",    // bordes y fondos suaves (del competidor: --e-global-color-5eb5862)
+        lavender: "#1D1D23", // negro premium oscuro (del competidor: --e-global-color-ecb33b2)
+        // Namespace brand para referencia y futura extensión
         brand: {
           red: "#EE1D23",
           redDark: "#B91419",
           redSoft: "#FFE7E8",
-          ice: "#E7F6F9",
-          black: "#000200",
-          graphite: "#101214",
-          steel: "#2B2F33",
+          warm: "#FAFAFA",
+          black: "#1D1D23",
+          graphite: "#363435",
+          steel: "#23323B",
           metal: "#6B7280",
-          silver: "#D7DEE2",
+          border: "#EBEAEB",
           white: "#FFFFFF",
         },
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["Barlow Condensed", "Arial Narrow", "sans-serif"],
+        // Heebo: cuerpo de texto del competidor exacto
+        sans: ["Heebo", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Exo 2: técnica extendida, similar a "new-science-extended" del competidor
+        display: ["Exo 2", "Arial", "sans-serif"],
+      },
+      fontSize: {
+        // Escala del competidor adaptada
+        // Body: 18px / 30px (--e-global-typography-text)
+        base: ["18px", { lineHeight: "30px" }],
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(0, 0, 0, 0.10)",
-        card: "0 4px 24px rgba(0, 0, 0, 0.06)",
+        soft: "12px 12px 50px rgba(0, 0, 0, 0.4)",  // deep shadow del competidor
+        card: "6px 6px 9px rgba(0, 0, 0, 0.2)",      // natural shadow del competidor
       },
     },
   },

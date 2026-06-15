@@ -5,10 +5,22 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /*
+    Tipografía base extraída del competidor:
+    font-family: Heebo (--e-global-typography-text-font-family)
+    font-size: 18px   (--e-global-typography-text-font-size)
+    font-weight: 400  (--e-global-typography-text-font-weight)
+    line-height: 30px (--e-global-typography-text-line-height)
+    color: #363435    (--e-global-color-text)
+  */
   body {
     @apply bg-white text-ink antialiased;
+    font-family: "Heebo", ui-sans-serif, system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.667;
   }
 
   ::selection {
@@ -21,24 +33,24 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
   }
 
-  /* Eyebrow: rojo mecánico sobre cualquier fondo */
+  /* Eyebrow: rojo Gálvez, uppercase, espaciado técnico */
   .eyebrow {
-    @apply text-xs font-bold uppercase tracking-[0.18em] text-rose;
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-rose;
   }
 
-  /* Botón rojo — acción principal, CTAs */
+  /* Botón rojo — acción principal */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-rose px-5 py-3 text-sm font-bold text-white shadow-soft transition hover:bg-rose-dark focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md bg-rose px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-rose-dark focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
   }
 
-  /* Botón oscuro — sobre fondos claros (secciones blancas/hielo) */
+  /* Botón oscuro — sobre fondos claros */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-md border border-ink/20 bg-transparent px-5 py-3 text-sm font-bold text-ink transition hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md border border-ink/20 bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-wide text-ink transition hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
   }
 
   /* Botón contorno — sobre fondos oscuros (hero, header, footer) */
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-md border border-shell/60 bg-transparent px-5 py-3 text-sm font-bold text-shell transition hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-md border border-shell/50 bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-wide text-shell transition hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2;
   }
 
   .section-pad {
