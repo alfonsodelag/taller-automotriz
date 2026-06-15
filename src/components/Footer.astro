@@ -1,35 +1,79 @@
 ---
 import { siteConfig, whatsappUrl } from "@/config/site";
+
+const serviceLinks = [
+  "Mecánica general",
+  "Diagnóstico computarizado",
+  "Chapistería",
+  "Pintura automotriz",
+  "Aire acondicionado automotriz",
+  "Detailing y pulimiento",
+  "Mantenimiento preventivo",
+  "BMW y carros japoneses",
+];
 ---
 
 <footer class="bg-lavender text-white">
-  <div class="container-page grid gap-10 py-14 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+  <div class="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+    <!-- Marca -->
     <div>
-      <img src="/images/logo.png" alt={`Logo ${siteConfig.businessName}`} class="h-16 w-auto object-contain brightness-0 invert" />
-      <p class="mt-4 max-w-md text-sm leading-6 text-shell/80">{siteConfig.description}</p>
+      <img
+        src="/images/logo.png"
+        alt={`Logo ${siteConfig.businessName}`}
+        class="h-16 w-auto object-contain brightness-0 invert"
+      />
+      <p class="mt-4 max-w-xs text-sm leading-6 text-shell/70">{siteConfig.description}</p>
       <a class="btn-primary mt-6 inline-flex" href={whatsappUrl}>Agendar por WhatsApp</a>
     </div>
+
+    <!-- Servicios -->
     <div>
-      <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-shell/60">Contacto</h2>
-      <ul class="mt-4 space-y-3 text-sm text-shell/80">
-        <li>{siteConfig.phone}</li>
-        <li>{siteConfig.email}</li>
-        <li>{siteConfig.address}</li>
+      <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-shell/50">Servicios</h2>
+      <ul class="mt-4 space-y-2.5">
+        {serviceLinks.map((name) => (
+          <li>
+            <a class="text-sm text-shell/70 transition hover:text-rose" href="/services">{name}</a>
+          </li>
+        ))}
       </ul>
     </div>
-    <div>
-      <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-shell/60">Horario</h2>
-      <ul class="mt-4 space-y-3 text-sm text-shell/80">
-        <li>{siteConfig.hours.weekdays}</li>
-        <li>{siteConfig.hours.saturday}</li>
-        <li>{siteConfig.hours.sunday}</li>
-      </ul>
+
+    <!-- Contacto & Horario -->
+    <div class="space-y-8">
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-shell/50">Contacto</h2>
+        <ul class="mt-4 space-y-2.5 text-sm text-shell/70">
+          <li>
+            <a class="hover:text-rose transition" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
+          </li>
+          <li>
+            <a class="hover:text-rose transition" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </li>
+          <li class="leading-6">{siteConfig.address}</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-shell/50">Horario</h2>
+        <ul class="mt-4 space-y-2.5 text-sm text-shell/70">
+          <li>{siteConfig.hours.weekdays}</li>
+          <li>{siteConfig.hours.saturday}</li>
+          <li>{siteConfig.hours.sunday}</li>
+        </ul>
+      </div>
     </div>
   </div>
+
   <div class="border-t border-white/10 py-5">
-    <div class="container-page flex flex-col gap-2 text-xs text-shell/50 sm:flex-row sm:items-center sm:justify-between">
+    <div class="container-page flex flex-col gap-2 text-xs text-shell/40 sm:flex-row sm:items-center sm:justify-between">
       <p>© {new Date().getFullYear()} {siteConfig.businessName}. Todos los derechos reservados.</p>
-      <a href={siteConfig.social.instagram} class="hover:text-rose transition" target="_blank" rel="noopener noreferrer">@galvezcarservices</a>
+      <a
+        href={siteConfig.social.instagram}
+        class="transition hover:text-rose"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @galvezcarservices
+      </a>
     </div>
   </div>
 </footer>

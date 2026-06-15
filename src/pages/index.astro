@@ -1,24 +1,28 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/sections/Hero.astro";
-import About from "@/sections/About.astro";
+import StatsBar from "@/sections/StatsBar.astro";
 import Services from "@/sections/Services.astro";
-import Doctors from "@/sections/Doctors.astro";
+import About from "@/sections/About.astro";
 import Testimonials from "@/sections/Testimonials.astro";
+import Doctors from "@/sections/Doctors.astro";
 import FAQ from "@/sections/FAQ.astro";
 import BlogPreview from "@/sections/BlogPreview.astro";
+import CTABanner from "@/sections/CTABanner.astro";
 import Contact from "@/sections/Contact.astro";
 import Location from "@/sections/Location.astro";
 ---
 
 <BaseLayout>
   <Hero />
-  <About />
+  <StatsBar />
   <Services />
-  <Doctors />
+  <About />
   <Testimonials />
+  <Doctors />
   <FAQ />
   <BlogPreview />
+  <CTABanner />
   <Contact />
   <Location />
 </BaseLayout>

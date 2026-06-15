@@ -1,25 +1,44 @@
 ---
 import SectionTitle from "@/components/SectionTitle.astro";
-import { doctors } from "@/content/doctors";
+
+const reasons = [
+  {
+    num: "01",
+    title: "Atendido por sus propios dueños",
+    body: "Sabes con quién hablas y quién responde. Los dueños del taller están presentes todos los días — sin intermediarios ni excusas."
+  },
+  {
+    num: "02",
+    title: "Servicio completo bajo un techo",
+    body: "Mecánica, chapistería, pintura, A/C y detailing en un solo lugar. Sin andar de taller en taller perdiendo tiempo y dinero."
+  },
+  {
+    num: "03",
+    title: "Especialistas en BMW y japoneses",
+    body: "Experiencia específica en mecánica y electrónica de BMW, Toyota, Honda, Nissan y otras marcas europeas y japonesas."
+  },
+  {
+    num: "04",
+    title: "Diagnóstico claro y honesto",
+    body: "Te explicamos qué tiene tu vehículo antes de empezar. Sin trabajo innecesario y sin sorpresas en el presupuesto final."
+  }
+];
 ---
 
 <section class="section-pad bg-shell">
   <div class="container-page">
     <SectionTitle
-      eyebrow="Quiénes somos"
-      title="Trato directo, experiencia real y compromiso con tu vehículo."
-      intro="En Gálvez Car Services conoces a quién hace el trabajo. Los propietarios están presentes todos los días para atenderte y responder por cada servicio."
+      eyebrow="Razones para elegirnos"
+      titleHtml='¿POR QUÉ <span class="text-rose">ELEGIRNOS?</span>'
+      intro="Lo que nos diferencia de otros talleres en Ciudad de Panamá."
       align="center"
     />
-    <div class="mt-10 grid gap-6 md:grid-cols-3">
-      {doctors.map((member) => (
-        <article class="overflow-hidden rounded-lg bg-white shadow-card border border-shell">
-          <img class="aspect-[4/5] w-full object-cover" src={member.image} alt={member.name} loading="lazy" />
-          <div class="border-t-2 border-rose p-5">
-            <h3 class="font-display text-2xl font-bold text-ink">{member.name}</h3>
-            <p class="mt-1 text-sm font-bold uppercase tracking-wide text-rose">{member.role}</p>
-            <p class="mt-3 text-sm leading-6 text-cocoa">{member.bio}</p>
-          </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {reasons.map((reason) => (
+        <article class="card p-6">
+          <div class="font-display text-5xl font-black text-rose/20">{reason.num}</div>
+          <h3 class="mt-4 font-display text-base font-bold uppercase leading-snug text-ink">{reason.title}</h3>
+          <p class="mt-3 text-sm leading-6 text-cocoa">{reason.body}</p>
         </article>
       ))}
     </div>

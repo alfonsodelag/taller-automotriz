@@ -1,0 +1,24 @@
+---
+import { whatsappUrl } from "@/config/site";
+---
+
+<section class="relative overflow-hidden bg-lavender py-20">
+  <!-- Acento de color de fondo -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-rose/5 blur-3xl"></div>
+    <div class="absolute -right-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-rose/5 blur-3xl"></div>
+  </div>
+
+  <div class="container-page relative flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
+    <h2 class="font-display text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+      ¿NECESITA ATENCIÓN<br class="hidden sm:block" /> TU VEHÍCULO?<br />
+      <span class="text-rose">ESCRÍBENOS HOY MISMO.</span>
+    </h2>
+    <a
+      class="btn-primary shrink-0 px-8 py-4 text-base"
+      href={whatsappUrl}
+    >
+      Agendar por WhatsApp →
+    </a>
+  </div>
+</section>

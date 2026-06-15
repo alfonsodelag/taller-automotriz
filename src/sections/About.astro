@@ -1,40 +1,51 @@
 ---
-import SectionTitle from "@/components/SectionTitle.astro";
+import Button from "@/components/Button.astro";
 ---
 
-<section class="section-pad bg-cream">
-  <div class="container-page grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+<section class="section-pad bg-lavender">
+  <div class="container-page grid items-center gap-12 lg:grid-cols-2">
+    <!-- Imágenes lado izquierdo -->
     <div class="grid grid-cols-2 gap-4">
-      <img class="h-80 w-full rounded-lg object-cover" src="/images/about-video.jpg" alt="Mecánico trabajando en el taller Gálvez Car Services" loading="lazy" />
-      <img class="mt-10 h-80 w-full rounded-lg object-cover" src="/images/contact-pic.jpg" alt="Interior del taller automotriz Gálvez Car Services en Panamá" loading="lazy" />
-    </div>
-    <div>
-      <SectionTitle
-        eyebrow="El taller"
-        title="Un taller familiar donde conoces a quién repara tu carro."
-        intro="Gálvez Car Services es un taller automotriz en Ciudad de Panamá atendido directamente por sus propios dueños. Más de 25 años de experiencia, trato directo y diagnóstico honesto sin sorpresas al final."
+      <img
+        class="h-72 w-full rounded-xl object-cover shadow-soft"
+        src="/images/about-video.jpg"
+        alt="Mecánico trabajando en el taller Gálvez Car Services"
+        loading="lazy"
       />
-      <div class="mt-8 grid gap-4 sm:grid-cols-2">
-        <div class="card p-5">
-          <div class="mb-3 h-0.5 w-8 bg-rose"></div>
-          <h3 class="font-bold text-ink">Atendido por sus dueños</h3>
-          <p class="mt-2 text-sm leading-6 text-cocoa">Sabes con quién hablas y quién responde por cada trabajo. Sin intermediarios ni excusas.</p>
-        </div>
-        <div class="card p-5">
-          <div class="mb-3 h-0.5 w-8 bg-rose"></div>
-          <h3 class="font-bold text-ink">Servicio completo</h3>
-          <p class="mt-2 text-sm leading-6 text-cocoa">Mecánica, chapistería, pintura, A/C y detailing bajo un mismo techo. Sin andar de taller en taller.</p>
-        </div>
-        <div class="card p-5">
-          <div class="mb-3 h-0.5 w-8 bg-rose"></div>
-          <h3 class="font-bold text-ink">BMW y carros japoneses</h3>
-          <p class="mt-2 text-sm leading-6 text-cocoa">Experiencia específica en mecánica y electrónica de BMW, Toyota, Honda, Nissan y otras marcas.</p>
-        </div>
-        <div class="card p-5">
-          <div class="mb-3 h-0.5 w-8 bg-rose"></div>
-          <h3 class="font-bold text-ink">Diagnóstico claro</h3>
-          <p class="mt-2 text-sm leading-6 text-cocoa">Te explicamos qué tiene el vehículo antes de empezar. Sin trabajo innecesario y sin sorpresas en el presupuesto.</p>
-        </div>
+      <img
+        class="mt-10 h-72 w-full rounded-xl object-cover shadow-soft"
+        src="/images/contact-pic.jpg"
+        alt="Interior del taller automotriz Gálvez Car Services en La Carrasquilla, Panamá"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Texto lado derecho -->
+    <div>
+      <p class="eyebrow">Sobre el taller</p>
+      <h2 class="mt-4 font-display text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl">
+        TALLER FAMILIAR CON MÁS DE <span class="text-rose">25 AÑOS</span> EN PANAMÁ
+      </h2>
+      <p class="mt-6 text-base leading-7 text-shell/75">
+        Gálvez Car Services es atendido directamente por sus propios dueños, en La Carrasquilla, Ciudad de Panamá. Trato directo, diagnóstico claro y trabajo garantizado — sin intermediarios.
+      </p>
+
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        {[
+          "Atendido por sus propios dueños",
+          "BMW y carros japoneses",
+          "Diagnóstico claro y honesto",
+          "Un solo taller para todo",
+        ].map((point) => (
+          <li class="flex items-start gap-3 text-sm text-shell/80">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose text-white text-xs font-bold">✓</span>
+            {point}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-8">
+        <Button href="/about" label="Conocer más sobre nosotros" />
       </div>
     </div>
   </div>
