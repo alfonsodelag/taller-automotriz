@@ -12,7 +12,6 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^5.0.7",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/vercel": "^10.0.8",
     "@sanity/astro": "^3.4.1",
     "@sanity/client": "^7.22.1",
     "@sanity/vision": "^6.0.0",
