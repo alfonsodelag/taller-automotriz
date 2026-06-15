@@ -5,9 +5,21 @@ import { siteConfig, whatsappUrl } from "@/config/site";
 
 <section class="section-pad bg-cream">
   <div class="container-page grid items-center gap-10 lg:grid-cols-2">
-    <div class="h-96 overflow-hidden rounded-lg bg-white shadow-soft border border-shell">
-      <img class="h-full w-full object-cover" src="/images/breadcrumb-bg.jpg" alt={`Zona cercana al taller ${siteConfig.businessName} en ${siteConfig.address}`} loading="lazy" />
+    <!-- Google Maps embed -->
+    <div class="h-96 overflow-hidden rounded-xl shadow-soft border border-shell">
+      <iframe
+        src="https://maps.google.com/maps?q=Calle+65+C+Este%2C+La+Carrasquilla%2C+Ciudad+de+Panama&output=embed&hl=es&z=16"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title={`Ubicación de ${siteConfig.businessName} en Google Maps`}
+      ></iframe>
     </div>
+
+    <!-- Info -->
     <div>
       <SectionTitle
         eyebrow="Ubicación"
@@ -25,7 +37,17 @@ import { siteConfig, whatsappUrl } from "@/config/site";
           </div>
         </div>
       </div>
-      <a class="btn-primary mt-6 inline-flex" href={whatsappUrl}>Cómo llegar – WhatsApp</a>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn-primary" href={whatsappUrl}>Cómo llegar – WhatsApp</a>
+        <a
+          class="btn-secondary"
+          href="https://maps.google.com/maps?q=Calle+65+C+Este%2C+La+Carrasquilla%2C+Ciudad+de+Panama"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir en Google Maps
+        </a>
+      </div>
     </div>
   </div>
 </section>
