@@ -3,7 +3,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
 import Contact from "@/sections/Contact.astro";
 import { services } from "@/content/services";
-import { whatsappUrl } from "@/config/site";
 ---
 
 <BaseLayout
@@ -25,7 +24,9 @@ import { whatsappUrl } from "@/config/site";
             <div class="p-6">
               <h2 class="font-display text-2xl font-bold text-ink">{service.title}</h2>
               <p class="mt-3 text-sm leading-6 text-cocoa">{service.description}</p>
-              <a class="mt-5 inline-flex text-sm font-semibold text-rose hover:text-ink" href={whatsappUrl}>Solicitar cotización →</a>
+              <a class="mt-5 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rose transition hover:text-rose-dark" href={`/services/${service.slug}`}>
+                Ver detalles →
+              </a>
             </div>
           </article>
         ))}

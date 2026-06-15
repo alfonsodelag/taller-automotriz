@@ -1,0 +1,148 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { sanityClient, urlFor } from "@/lib/sanity";
+import { toHTML } from "@portabletext/to-html";
+import { whatsappUrl } from "@/config/site";
+
+export async function getStaticPaths() {
+  const posts = await sanityClient.fetch<{ slug: string }[]>(
+    `*[_type == "post" && category in ["Mecánica","Chapistería","Pintura","Pintura y chapistería","Aire acondicionado","Detailing","BMW","Carros japoneses","Mantenimiento"]] { "slug": slug.current }`
+  );
+  return posts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+
+type PostFull = {
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt: string;
+  category: string;
+  image: any;
+  body: any[];
+};
+
+const post = await sanityClient.fetch<PostFull | null>(
+  `*[_type == "post" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    publishedAt,
+    excerpt,
+    category,
+    image,
+    body
+  }`,
+  { slug }
+);
+
+const bodyHtml = post?.body
+  ? toHTML(post.body, {
+      components: {
+        types: {
+          image: ({ value }: any) => {
+            const src = urlFor(value).width(900).url();
+            const alt = value.alt ?? "";
+            return `<figure class="my-8"><img src="${src}" alt="${alt}" class="rounded-xl w-full object-cover" loading="lazy" /></figure>`;
+          },
+        },
+      },
+    })
+  : "";
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("es-PA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout
+  title={post ? `${post.title} | Blog Gálvez Car Services` : "Artículo | Blog"}
+  description={post?.excerpt ?? ""}
+>
+  {post ? (
+    <>
+      <!-- Hero del artículo -->
+      <div class="relative bg-lavender overflow-hidden">
+        {post.image && (
+          <img
+            class="absolute inset-0 h-full w-full object-cover opacity-35"
+            src={urlFor(post.image).width(1600).height(500).url()}
+            alt={post.title}
+          />
+        )}
+        <div class="relative z-10 container-page py-24 md:py-32">
+          {post.category && (
+            <span class="mb-4 inline-block rounded bg-rose px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
+              {post.category}
+            </span>
+          )}
+          <h1 class="font-display text-3xl font-bold uppercase leading-tight text-white md:text-5xl max-w-4xl">
+            {post.title}
+          </h1>
+          <time
+            class="mt-4 block text-sm font-bold uppercase tracking-widest text-shell/70"
+            datetime={post.publishedAt}
+          >
+            {formatDate(post.publishedAt)}
+          </time>
+        </div>
+        <!-- línea roja inferior -->
+        <div class="absolute bottom-0 left-0 h-1 w-full bg-rose"></div>
+      </div>
+
+      <!-- Contenido del artículo -->
+      <section class="section-pad bg-cream">
+        <div class="container-page">
+          <div class="mx-auto max-w-3xl">
+            <!-- Extracto destacado -->
+            <p class="mb-10 border-l-4 border-rose pl-6 text-xl italic leading-relaxed text-ink/80">
+              {post.excerpt}
+            </p>
+
+            <!-- Cuerpo del artículo -->
+            <div class="prose-galvez" set:html={bodyHtml} />
+
+            <!-- CTA -->
+            <div class="mt-16 rounded-xl bg-lavender p-8 text-center">
+              <p class="font-display text-2xl font-bold uppercase text-white">
+                ¿Tienes alguna pregunta sobre tu vehículo?
+              </p>
+              <p class="mt-3 text-shell/80">
+                Contáctanos directamente por WhatsApp y te respondemos en minutos.
+              </p>
+              <a
+                class="btn-primary mt-6 inline-block"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consultar por WhatsApp
+              </a>
+            </div>
+
+            <!-- Volver al blog -->
+            <div class="mt-10 text-center">
+              <a
+                class="text-sm font-bold uppercase tracking-widest text-rose transition hover:text-rose-dark"
+                href="/blog"
+              >
+                ← Volver al blog
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  ) : (
+    <section class="section-pad bg-cream">
+      <div class="container-page text-center">
+        <p class="text-cocoa">Artículo no encontrado.</p>
+        <a class="btn-primary mt-6 inline-block" href="/blog">Ver todos los artículos</a>
+      </div>
+    </section>
+  )}
+</BaseLayout>

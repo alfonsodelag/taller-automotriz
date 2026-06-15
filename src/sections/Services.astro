@@ -1,7 +1,6 @@
 ---
 import SectionTitle from "@/components/SectionTitle.astro";
 import { services } from "@/content/services";
-import { whatsappUrl } from "@/config/site";
 ---
 
 <section class="section-pad bg-white">
@@ -31,9 +30,9 @@ import { whatsappUrl } from "@/config/site";
             <p class="mt-2 text-sm leading-6 text-cocoa">{service.description}</p>
             <a
               class="mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide text-rose transition hover:text-rose-dark"
-              href={whatsappUrl}
+              href={`/services/${service.slug}`}
             >
-              Consultar <span aria-hidden="true">→</span>
+              Ver detalles <span aria-hidden="true">→</span>
             </a>
           </div>
         </article>
